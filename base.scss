@@ -1,0 +1,50 @@
+@import "./open-iconic.scss";
+@import "./variables.scss";
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#npm-gui-vue {
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
+  @include flex();
+}
+
+.row {
+  @include flexbox();
+  @include flex();
+}
+
+.left-column {
+  padding: $npm-gui-gutter / 2;
+  @include flexbox();
+  @include flex-basis(20%);
+}
+
+.right-column {
+  padding: $npm-gui-gutter / 2;
+  @include flexbox();
+  @include flex();
+}
+
+input {
+  border-radius: $npm-gui-radius;
+  border: 1px solid $npm-gui-color-gray;
+  display: block;
+  padding: $npm-gui-gutter / 2;
+  font-size: 0.8em;
+  outline: none;
+  width: 100%;
+}

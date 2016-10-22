@@ -1,2 +1,3 @@
-import NpmGuiNav from './npm-gui-nav.vue';
-export default NpmGuiNav;
+import Component from './npm-gui-nav.vue';
+
+export default Component;

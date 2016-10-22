@@ -1,2 +1,3 @@
-import NpmGuiConsole from './npm-gui-console.vue';
-export default NpmGuiConsole;
+import Component from './npm-gui-console.vue';
+
+export default Component;

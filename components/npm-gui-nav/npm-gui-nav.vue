@@ -1,30 +1,88 @@
-<style scoped>
+<style scoped lang="sass" rel="stylesheet/scss">
+  @import "../../variables.scss";
+
+  $height: 45px;
+
   h1 {
-    color: white;
-    font-size: 1.5em;
-    margin: 0;
-    line-height: 50px;
+    color: $npm-gui-color-light;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 ($npm-gui-gutter / 2) 0 0;
+    line-height: $height;
   }
 
-  div {
-    background: #3E3F3A;
-    height: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
+  nav {
+    background: $npm-gui-color-dark;
+    height: $height;
+    padding-left: $npm-gui-gutter / 2;
+    padding-right: $npm-gui-gutter / 2;
+    @include flex-basis($height);
+  }
+
+  .right-section {
+    float: right;
+  }
+
+  p {
+    color: $npm-gui-color-gray;
+    font-weight: 400;
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+    line-height: $height;
   }
 </style>
 
 <template>
-  <div>
+  <nav>
     <h1>npm-gui</h1>
-  </div>
+    <npm-gui-btn v-for="button in buttons" class="dark" v-bind:href="button.link">{{ button.text }}</npm-gui-btn>
+    <div class="right-section">
+      <p>Current Project: {{ currentProject.name }}</p>
+      <npm-gui-btn class="dark" icon="folder"></npm-gui-btn>
+    </div>
+  </nav>
 </template>
 
 <script>
+  import NpmGuiBtn from '../npm-gui-btn';
+
   export default {
+    components: {NpmGuiBtn},
     data () {
       return {
-        msg: 'Hello world!'
+        msg: 'Hello world!',
+        buttons: [
+          {
+            text: 'Global Dependencies',
+            link: 'link',
+            title: '',
+          },
+          {
+            text: 'Dependencies',
+            link: 'link',
+            title: '',
+          },
+          {
+            text: 'Dev Dependencies',
+            link: 'link',
+            title: '',
+          },
+          {
+            text: 'Tasks',
+            link: 'link',
+            title: '',
+          },
+          {
+            text: 'Command Builder',
+            link: 'link',
+            title: '',
+          },
+        ],
+        currentProject: {
+          name: 'npm-gui',
+        }
       }
     }
   }

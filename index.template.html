@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>NPM Graphic User Interface</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 </head>
 <body>
 <div id="npm-gui-vue">
   <npm-gui-nav></npm-gui-nav>
-  <npm-gui-console></npm-gui-console>
-  <ol>
-    <!--
-    Now we provide each todo-item with the todo object
-    it's representing, so that its content can be dynamic
-    -->
-    <todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>
-  </ol>
+  <div class="row">
+    <div class="left-column">
+      <npm-gui-console></npm-gui-console>
+    </div>
+    <div class="right-column">
+      <npm-gui-dependencies></npm-gui-dependencies>
+    </div>
+  </div>
 </div>
 </body>

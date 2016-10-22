@@ -19,15 +19,15 @@ module.exports = {
         loader: 'babel',
       }, {
         test: /\.css/,
-        loader: 'style-loader!css-loader',
+        loaders: ['style', 'css'],
       }, {
         test: /\.scss$/,
-        loader: ['css', 'postcss', 'sass'],
+        loaders: ['style', 'css', 'sass'],
       }, {
         test: /\.vue/,
         loader: 'vue',
       }, {
-        test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg)/,
+        test: /\.(png|woff|woff2|eot|otf|ttf|svg|gif|jpg)/,
         loader: 'url?limit=1000',
       }, {
         test: /\.html$/,
@@ -37,7 +37,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modulesDirectories: ['web_modules', 'node_modules'],
+    modulesDirectories: ['web_modules', 'node_modules', 'npm-gui_modules'],
   },
   plugins: [
     new HtmlWebpackPlugin({
