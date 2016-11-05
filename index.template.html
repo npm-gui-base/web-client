@@ -13,7 +13,11 @@
       <npm-gui-console></npm-gui-console>
     </div>
     <div class="right-column">
-      <npm-gui-dependencies></npm-gui-dependencies>
+      <transition name="fade"  mode="out-in">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
     </div>
   </div>
 </div>

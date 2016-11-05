@@ -1,4 +1,4 @@
-<style scoped lang="sass" rel="stylesheet/scss">
+<style scoped lang="scss" rel="stylesheet/scss">
   @import "../../variables.scss";
 
   .dependencies {
@@ -82,11 +82,8 @@
   import NpmGuiBtn from '../npm-gui-btn';
 
   export default {
-    components: {NpmGuiBtn},
-    data () {
-      return {
-        msg: 'Hello world!',
-      }
-    }
-  }
+    components: {
+      NpmGuiBtn,
+    },
+  };
 </script>

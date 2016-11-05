@@ -1,4 +1,4 @@
-<style scoped lang="sass" rel="stylesheet/scss">
+<style scoped lang="scss" rel="stylesheet/scss">
   @import "../../variables.scss";
 
   .console {
@@ -42,11 +42,13 @@
   import NpmGuiBtn from '../npm-gui-btn';
 
   export default {
-    components: {NpmGuiBtn},
-    data () {
+    components: {
+      NpmGuiBtn,
+    },
+    data() {
       return {
-        msg: 'Hello world!'
-      }
-    }
-  }
+        msg: 'Hello world!',
+      };
+    },
+  };
 </script>

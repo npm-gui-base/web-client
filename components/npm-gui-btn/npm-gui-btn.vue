@@ -1,4 +1,4 @@
-<style scoped lang="sass" rel="stylesheet/scss">
+<style scoped lang="scss" rel="stylesheet/scss">
   @import "../../variables.scss";
 
   $hover-darken: 7%;
@@ -115,15 +115,22 @@
 </style>
 
 <template>
-  <button>
+  <button v-on:click="onClick">
     <span></span>
     <span v-if="icon" class="oi" :data-glyph="icon"></span>
     <slot></slot>
   </button>
 </template>
 
-<script>
+<script lang="babel" type="text/babel">
   export default {
-    props: ['icon'],
-  }
+    props: ['icon', 'route'],
+    methods: {
+      onClick() {
+        if (this.route) {
+          this.$router.replace(this.route);
+        }
+      },
+    },
+  };
 </script>

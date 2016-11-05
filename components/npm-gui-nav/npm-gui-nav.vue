@@ -1,4 +1,4 @@
-<style scoped lang="sass" rel="stylesheet/scss">
+<style scoped lang="scss" rel="stylesheet/scss">
   @import "../../variables.scss";
 
   $height: 45px;
@@ -37,7 +37,7 @@
 <template>
   <nav>
     <h1>npm-gui</h1>
-    <npm-gui-btn v-for="button in buttons" class="dark" v-bind:href="button.link">{{ button.text }}</npm-gui-btn>
+    <npm-gui-btn v-for="button in buttons" class="dark" v-bind:route="button.route">{{ button.text }}</npm-gui-btn>
     <div class="right-section">
       <p>Current Project: {{ currentProject.name }}</p>
       <npm-gui-btn class="dark" icon="folder"></npm-gui-btn>
@@ -49,41 +49,48 @@
   import NpmGuiBtn from '../npm-gui-btn';
 
   export default {
-    components: {NpmGuiBtn},
-    data () {
+    components: {
+      NpmGuiBtn,
+    },
+    data() {
       return {
         msg: 'Hello world!',
         buttons: [
           {
             text: 'Global Dependencies',
-            link: 'link',
+            route: 'global-dependencies',
             title: '',
           },
           {
             text: 'Dependencies',
-            link: 'link',
+            route: 'dependencies',
             title: '',
           },
           {
             text: 'Dev Dependencies',
-            link: 'link',
+            route: 'dev-dependencies',
             title: '',
           },
           {
             text: 'Tasks',
-            link: 'link',
+            route: 'tasks',
+            title: '',
+          },
+          {
+            text: 'Webpack GUI',
+            route: 'webpack-gui',
             title: '',
           },
           {
             text: 'Command Builder',
-            link: 'link',
+            route: 'command-builder',
             title: '',
           },
         ],
         currentProject: {
           name: 'npm-gui',
-        }
-      }
-    }
-  }
+        },
+      };
+    },
+  };
 </script>
