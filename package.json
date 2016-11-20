@@ -11,7 +11,8 @@
     "lint:css": "node node_modules/stylelint/dist/cli.js 'components/*/**.vue' *.scss --syntax scss",
     "lint:js": "node node_modules/eslint/bin/eslint 'components/*/**.vue' 'components/*/**.js'",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
