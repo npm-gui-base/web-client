@@ -17,11 +17,22 @@ const router = new VueRouter({
   routes,
 });
 
-new Vue({ // eslint-disable-line
-  el: '#npm-gui-vue',
-  components: {
-    NpmGuiNav,
-    NpmGuiConsole,
-  },
-  router,
-});
+function initialize() {
+  const app = new Vue({ // eslint-disable-line
+    el: '#npm-gui-vue',
+    components: {
+      NpmGuiNav,
+      NpmGuiConsole,
+    },
+    router,
+  });
+
+  return app;
+}
+
+initialize();
+
+export default {
+  initialize,
+  Vue,
+};
