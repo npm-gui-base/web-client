@@ -5,7 +5,6 @@
   $padding: 10px;
 
   @mixin button($name, $color) {
-    /* stylelint-disable */
     &.#{$name} {
       background-color: $color;
 
@@ -21,7 +20,6 @@
         background-color: lighten($color, $hover-darken * 2);
       }
     }
-    /* stylelint-enable */
   }
 
   button {

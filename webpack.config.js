@@ -20,7 +20,7 @@ module.exports = {
     preLoaders: [
       {
         test: /\.vue$/,
-        loaders: ['eslint'],
+        loader: 'eslint',
         exclude: EXCLUDE,
       },
       {
@@ -73,6 +73,7 @@ module.exports = {
     }),
     new StyleLintPlugin({
       files: ['**/*.s?(a|c)ss', '**/*.vue'],
+      syntax: 'scss', // without it build will throw error
     }),
   ],
 };
