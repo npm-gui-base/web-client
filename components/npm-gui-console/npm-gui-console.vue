@@ -10,15 +10,16 @@
   pre {
     border: 1px solid $npm-gui-color-gray;
     border-radius: $npm-gui-radius;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: 0.8em;
     color: $npm-gui-color-gray-deep;
-    padding: $npm-gui-gutter / 4;
-    overflow: auto;
-    margin-top: $npm-gui-gutter / 2;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: .8em;
     margin-bottom: 0;
+    margin-top: $npm-gui-gutter / 2;
+    overflow: auto;
+    padding: $npm-gui-gutter / 4;
     word-break: break-all;
     word-wrap: break-word;
+
     @include flex();
   }
 

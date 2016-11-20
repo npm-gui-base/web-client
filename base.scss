@@ -1,13 +1,14 @@
-@import "./open-iconic.scss";
-@import "./variables.scss";
+@import './open-iconic';
+@import './variables';
 
 body {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
+  font-weight: 500;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -16,35 +17,38 @@ html, body {
 }
 
 #npm-gui-vue {
-  height: 100%;
-  @include flexbox();
+  @include flexbox;
   @include flex-direction(column);
-  @include flex();
+  @include flex;
+
+  height: 100%;
 }
 
 .row {
-  @include flexbox();
-  @include flex();
+  @include flexbox;
+  @include flex;
 }
 
 .left-column {
-  padding: $npm-gui-gutter / 2;
-  @include flexbox();
+  @include flexbox;
   @include flex-basis(20%);
+
+  padding: $npm-gui-gutter / 2;
 }
 
 .right-column {
+  @include flexbox;
+  @include flex;
+
   padding: $npm-gui-gutter / 2;
-  @include flexbox();
-  @include flex();
 }
 
 input {
-  border-radius: $npm-gui-radius;
   border: 1px solid $npm-gui-color-gray;
+  border-radius: $npm-gui-radius;
   display: block;
-  padding: $npm-gui-gutter / 2;
-  font-size: 0.8em;
+  font-size: .8em;
   outline: none;
+  padding: $npm-gui-gutter / 2;
   width: 100%;
 }

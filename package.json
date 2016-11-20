@@ -4,12 +4,14 @@
   "description": "New npm-gui client based on VueJS",
   "main": "index.js",
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
+    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --history-api-fallback --inline",
+    "build": "node node_modules/webpack/bin/webpack -p",
+    "test:unit": "karma start test/unit/karma.conf.js --single-run",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "node node_modules/stylelint/dist/cli.js 'components/*/**.vue' *.scss --syntax scss",
+    "lint:js": "node node_modules/eslint/bin/eslint 'components/*/**.vue' 'components/*/**.js'",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue components test/unit/specs test/e2e/specs"
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -73,12 +75,19 @@
     "phantomjs-prebuilt": "^2.1.13",
     "sass-flex-mixin": "^1.0.3",
     "sass-loader": "^4.0.2",
+    "sasslint-loader": "0.0.1",
+    "scss-loader": "0.0.1",
+    "scsslint-loader": "^0.1.1",
     "selenium-server": "^2.53.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.5",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
+    "stylelint-processor-html": "^1.0.0",
+    "stylelint-webpack-plugin": "^0.4.0",
     "url-loader": "^0.5.7",
     "vue-loader": "^9.7.0",
     "vue-style-loader": "^1.0.0",
@@ -96,6 +105,6 @@
     "normalize.css": "^5.0.0",
     "vue": "v2.0.3",
     "vue-resource": "^1.0.3",
-    "vue-router": "^2.0.1"
+    "vue-router": "^2.0.3"
   }
 }

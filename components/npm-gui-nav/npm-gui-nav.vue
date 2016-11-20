@@ -1,5 +1,5 @@
 <style scoped lang="scss" rel="stylesheet/scss">
-  @import "../../variables.scss";
+  @import "../../variables";
 
   $height: 45px;
 
@@ -8,8 +8,8 @@
     display: inline-block;
     font-size: 1em;
     font-weight: 400;
-    margin: 0 ($npm-gui-gutter / 2) 0 0;
     line-height: $height;
+    margin: 0 ($npm-gui-gutter / 2) 0 0;
   }
 
   nav {
@@ -17,6 +17,7 @@
     height: $height;
     padding-left: $npm-gui-gutter / 2;
     padding-right: $npm-gui-gutter / 2;
+
     @include flex-basis($height);
   }
 
@@ -26,11 +27,11 @@
 
   p {
     color: $npm-gui-color-gray;
-    font-weight: 400;
-    font-size: 0.9em;
-    margin: 0;
     display: inline-block;
+    font-size: .9em;
+    font-weight: 400;
     line-height: $height;
+    margin: 0;
   }
 </style>
 

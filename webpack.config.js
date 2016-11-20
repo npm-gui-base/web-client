@@ -1,4 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+
+const EXCLUDE = /(node_modules|bower_components)/;
 
 module.exports = {
   entry: {
@@ -11,12 +15,25 @@ module.exports = {
   watchOptions: {
     poll: 1000,
   },
+  devtool: '#eval-source-map',
   module: {
+    preLoaders: [
+      {
+        test: /\.vue$/,
+        loaders: ['eslint'],
+        exclude: EXCLUDE,
+      },
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        exclude: EXCLUDE,
+      },
+    ],
     loaders: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
         loader: 'babel',
+        exclude: EXCLUDE,
       }, {
         test: /\.css/,
         loaders: ['style', 'css'],
@@ -29,11 +46,18 @@ module.exports = {
       }, {
         test: /\.(png|woff|woff2|eot|otf|ttf|svg|gif|jpg)/,
         loader: 'url?limit=1000',
-      }, {
-        test: /\.html$/,
-        exclude: /(.+\.template\.html)/,
-        loader: 'html',
       },
+    ],
+  },
+  vue: {
+    loaders: {
+      scss: 'vue-style-loader!css-loader!sass-loader',
+      postcss: 'vue-style-loader!css-loader',
+    },
+    postcss: [
+      autoprefixer({
+        browsers: ['last 2 versions'],
+      }),
     ],
   },
   resolve: {
@@ -46,6 +70,9 @@ module.exports = {
       chunks: ['npmGuiWebClient'],
       hash: true,
       mobile: true,
+    }),
+    new StyleLintPlugin({
+      files: ['**/*.s?(a|c)ss', '**/*.vue'],
     }),
   ],
 };

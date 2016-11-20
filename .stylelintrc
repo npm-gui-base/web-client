@@ -1,0 +1,11 @@
+{
+  "processors": ["stylelint-processor-html"],
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "declaration-block-properties-order": "alphabetical",
+    "number-leading-zero": "never",
+    "at-rule-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true
+  }
+}
