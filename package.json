@@ -31,12 +31,12 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
+    "axios": "^0.15.2",
     "webpack": "^1.13.3",
     "normalize.css": "^5.0.0",
     "babel-loader": "^6.2.7",
     "vue": "v2.0.8",
     "url-loader": "^0.5.7",
-    "vue-resource": "^1.0.3",
     "vue-loader": "^9.7.0",
     "autoprefixer": "^6.5.1",
     "stylelint-webpack-plugin": "^0.4.0",

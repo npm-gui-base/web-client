@@ -29,7 +29,6 @@
     font-family: inherit;
     font-size: .7em;
     font-weight: 500;
-    min-width: 34px;
     outline: none;
     padding: $padding;
     text-transform: uppercase;

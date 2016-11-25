@@ -7,17 +7,37 @@
     @include flex();
   }
 
-  pre {
+  .table-container {
     border: 1px solid $npm-gui-color-gray;
     border-radius: $npm-gui-radius;
-    color: $npm-gui-color-gray-deep;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     margin-bottom: $npm-gui-gutter / 2;
     margin-top: $npm-gui-gutter / 2;
     overflow: auto;
-    padding: $npm-gui-gutter / 4;
 
     @include flex();
+  }
+
+  table {
+    border-collapse: collapse;
+    color: $npm-gui-color-dark-deep;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: .8em;
+    width: 100%;
+
+    tr:hover {
+      background: $npm-gui-color-gray-light;
+    }
+
+    td,
+    th {
+      border-bottom: 1px solid $npm-gui-color-gray;
+      padding: .5em;
+      text-align: left;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
   }
 
   iframe {
@@ -27,6 +47,37 @@
 
   .right {
     float: right;
+  }
+
+  .label {
+    border-radius: $npm-gui-radius;
+    color: $npm-gui-color-light;
+    float: right;
+    font-size: .8em;
+    font-weight: bold;
+    padding: .2em .4em;
+
+    &--danger {
+      background: $npm-gui-color-danger;
+    }
+
+    &--warning {
+      background: $npm-gui-color-warning;
+    }
+  }
+
+  .column {
+    &-action {
+      width: 10em;
+    }
+
+    &-nsp {
+      width: 8em;
+    }
+
+    &-version {
+      width: 15%;
+    }
   }
 </style>
 
@@ -74,17 +125,74 @@
         </npm-gui-btn>
       </div>
     </header>
-    <pre>asd</pre>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Version</th>
+          <th>NSP</th>
+          <th>Installed</th>
+          <th>Wanted</th>
+          <th>Latest</th>
+          <th>Action</th>
+        </tr>
+        <tr v-for="dependency in dependencies">
+          <td>
+            {{ dependency.key }}
+            <span class="label label--warning" v-if="dependency.repo === 'bower'">Bower</span>
+            <span class="label label--danger" v-if="dependency.repo === 'npm'">npm</span>
+          </td>
+          <td class="column-version">{{ dependency.version }}</td>
+          <td class="column-nsp">-</td>
+          <td class="column-version">{{ dependency.installed }}</td>
+          <td class="column-version">{{ dependency.wanted }}</td>
+          <td class="column-version">{{ dependency.latest }}</td>
+          <td class="column-action">
+            <npm-gui-btn icon="trash" class="danger"></npm-gui-btn>
+            <npm-gui-btn icon="lock-locked" class="primary"></npm-gui-btn>
+            <npm-gui-btn icon="external-link" class="warning"></npm-gui-btn>
+          </td>
+        </tr>
+      </table>
+    </div>
     <iframe src="http://www.forkcode.com/npm-gui/0.3.2.html"></iframe>
   </div>
 </template>
 
 <script>
+  import axios from 'axios';
+
   import NpmGuiBtn from '../npm-gui-btn';
 
   export default {
     components: {
       NpmGuiBtn,
+    },
+    data() {
+      return {
+        loading: false,
+        error: null,
+        dependencies: {},
+      };
+    },
+    created() {
+      this.loadDependencies();
+    },
+    methods: {
+      loadDependencies() {
+        this.loading = true;
+        axios
+          .get(`/api/${this.$route.meta.api}`)
+          .then((response) => {
+            this.loading = false;
+            this.error = null;
+            this.dependencies = response.data;
+          })
+          .catch((error) => {
+            this.loading = false;
+            this.error = error;
+          });
+      },
     },
   };
 </script>

@@ -76,4 +76,13 @@ module.exports = {
       syntax: 'scss', // without it build will throw error
     }),
   ],
+  devServer: {
+    proxy: [
+      {
+        context: ['/api/**'],
+        target: 'http://localhost:9002/',
+        secure: false,
+      },
+    ],
+  },
 };
