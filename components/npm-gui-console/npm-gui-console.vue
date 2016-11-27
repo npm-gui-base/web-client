@@ -72,7 +72,6 @@
     },
     methods: {
       clear() {
-        console.log('wtf');
         this.log = '';
       },
     },

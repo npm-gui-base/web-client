@@ -55,8 +55,8 @@
     }
 
     .oi {
-      margin-right: 3px;
       font-size: inherit;
+      margin-right: 3px;
     }
   }
 </style>

@@ -2,16 +2,16 @@
   @import "../../variables";
 
   .npm-gui-search {
+    background: $npm-gui-color-light;
     border: 1px solid $npm-gui-color-light;
     border-radius: $npm-gui-radius;
-    background: $npm-gui-color-light;
-    overflow: hidden;
-    position: absolute;
-    max-width: 120px;
-    margin-top: -7.5px;
     margin-left: -7.5px;
-    padding: 7.5px;
+    margin-top: -7.5px;
     max-height: 32px;
+    max-width: 120px;
+    overflow: hidden;
+    padding: 7.5px;
+    position: absolute;
     transition: max-width 300ms, max-height 300ms;
 
     &--open {
@@ -21,17 +21,14 @@
     }
 
     form {
-      margin-top: 6px;
       margin-bottom: 6px;
+      margin-top: 6px;
     }
 
-    input {
-      width: 7em;
-      display: inline-block;
-    }
+    input,
     select {
-      width: 7em;
       display: inline-block;
+      width: 7em;
     }
   }
 </style>

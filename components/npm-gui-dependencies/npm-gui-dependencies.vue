@@ -46,8 +46,8 @@
   }
 
   .loading {
-    text-align: center;
     margin-top: 10vh;
+    text-align: center;
   }
 
   .column {
