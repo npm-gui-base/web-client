@@ -5,6 +5,8 @@
     @include flexbox();
     @include flex-direction(column);
     @include flex();
+
+    position: relative;
   }
 
   .table-container {
@@ -15,29 +17,6 @@
     overflow: auto;
 
     @include flex();
-  }
-
-  table {
-    border-collapse: collapse;
-    color: $npm-gui-color-dark-deep;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: .8em;
-    width: 100%;
-
-    tr:hover {
-      background: $npm-gui-color-gray-light;
-    }
-
-    td,
-    th {
-      border-bottom: 1px solid $npm-gui-color-gray;
-      padding: .5em;
-      text-align: left;
-
-      &:last-child {
-        border-right: 0;
-      }
-    }
   }
 
   iframe {
@@ -66,9 +45,14 @@
     }
   }
 
+  .loading {
+    text-align: center;
+    margin-top: 10vh;
+  }
+
   .column {
     &-action {
-      width: 10em;
+      width: 11em;
     }
 
     &-nsp {
@@ -76,7 +60,7 @@
     }
 
     &-version {
-      width: 15%;
+      width: 10%;
     }
   }
 </style>
@@ -84,7 +68,7 @@
 <template>
   <div class="dependencies">
     <header>
-      <npm-gui-btn class="primary small" icon="reload">Refresh</npm-gui-btn>
+      <npm-gui-search></npm-gui-search>
       <div class="right">
         <npm-gui-btn
           class="info small"
@@ -126,7 +110,7 @@
       </div>
     </header>
     <div class="table-container">
-      <table>
+      <table v-show="!loading">
         <tr>
           <th>Name</th>
           <th>Version</th>
@@ -154,6 +138,7 @@
           </td>
         </tr>
       </table>
+      <div v-show="loading" class="loading">loading...</div>
     </div>
     <iframe src="http://www.forkcode.com/npm-gui/0.3.2.html"></iframe>
   </div>
@@ -163,10 +148,12 @@
   import axios from 'axios';
 
   import NpmGuiBtn from '../npm-gui-btn';
+  import NpmGuiSearch from '../npm-gui-search';
 
   export default {
     components: {
       NpmGuiBtn,
+      NpmGuiSearch,
     },
     data() {
       return {
@@ -177,6 +164,13 @@
     },
     created() {
       this.loadDependencies();
+    },
+    watch: {
+      $route(to) {
+        if (to.name.includes('dependencies')) {
+          this.loadDependencies();
+        }
+      },
     },
     methods: {
       loadDependencies() {

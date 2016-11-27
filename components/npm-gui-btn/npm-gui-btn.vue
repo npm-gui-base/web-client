@@ -27,7 +27,7 @@
     border-radius: $npm-gui-radius;
     color: $npm-gui-color-light;
     font-family: inherit;
-    font-size: .7em;
+    font-size: 11px;
     font-weight: 500;
     outline: none;
     padding: $padding;
@@ -42,7 +42,7 @@
     @include button('info', $npm-gui-color-info);
 
     &.small {
-      font-size: .6em;
+      font-size: 9.5px;
       padding: $padding * .6;
     }
 
@@ -56,6 +56,7 @@
 
     .oi {
       margin-right: 3px;
+      font-size: inherit;
     }
   }
 </style>
@@ -72,9 +73,11 @@
   export default {
     props: ['icon', 'route'],
     methods: {
-      onClick() {
+      onClick(event) {
         if (this.route) {
           this.$router.replace(this.route);
+        } else {
+          this.$emit('click', event);
         }
       },
     },

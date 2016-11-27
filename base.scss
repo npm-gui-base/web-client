@@ -43,12 +43,37 @@ body {
   padding: $npm-gui-gutter / 2;
 }
 
-input {
+input,
+select {
+  background: $npm-gui-color-light;
   border: 1px solid $npm-gui-color-gray;
   border-radius: $npm-gui-radius;
   display: block;
-  font-size: .8em;
+  font-size: 11px;
   outline: none;
-  padding: $npm-gui-gutter / 2;
+  height: 30px;
+  padding: 7.5px;
+}
+
+table {
+  border-collapse: collapse;
+  color: $npm-gui-color-dark-deep;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: .8em;
   width: 100%;
+
+  tr:hover {
+    background: $npm-gui-color-gray-light;
+  }
+
+  td,
+  th {
+    border-bottom: 1px solid $npm-gui-color-gray;
+    padding: .5em;
+    text-align: left;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
 }

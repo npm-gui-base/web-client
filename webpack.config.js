@@ -82,6 +82,7 @@ module.exports = {
         context: ['/api/**'],
         target: 'http://localhost:9002/',
         secure: false,
+        ws: true,
       },
     ],
   },

@@ -23,6 +23,13 @@
     @include flex();
   }
 
+  header {
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+
   .right {
     float: right;
   }
@@ -31,11 +38,17 @@
 <template>
   <div class="console">
     <header>
+      <p><span class="oi" data-glyph="terminal"></span> Console</p>
       <div class="right">
-        <npm-gui-btn class="danger small" icon="delete">Clear</npm-gui-btn>
+        <npm-gui-btn
+          class="danger small"
+          icon="delete"
+          v-on:click="clear()"
+        >Clear
+        </npm-gui-btn>
       </div>
     </header>
-    <pre><p>sef asefas keygf aksjeg fkasjgefkas e</p></pre>
+    <pre><p>{{log}}</p></pre>
   </div>
 </template>
 
@@ -46,10 +59,22 @@
     components: {
       NpmGuiBtn,
     },
+    created() {
+      const consoleSocket = new WebSocket(`ws://${location.host}/api/console`);// eslint-disable-line
+      consoleSocket.onmessage = (msg) => {
+        this.log += msg.data;
+      };
+    },
     data() {
       return {
-        msg: 'Hello world!',
+        log: '',
       };
+    },
+    methods: {
+      clear() {
+        console.log('wtf');
+        this.log = '';
+      },
     },
   };
 </script>
